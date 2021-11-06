@@ -395,7 +395,7 @@ class _DashBoardState extends State<DashBoard> {
                               onPressed: () {
                                 setBottomBarIndex(1);
                                 Navigator.push(
-                                    context, new MaterialPageRoute(builder: (context) => new ProfileEdit()));
+                                    context, new MaterialPageRoute(builder: (context) =>  ProfileEdit()));
                               }),
                           Container(
                             width: size.width * 0.20,

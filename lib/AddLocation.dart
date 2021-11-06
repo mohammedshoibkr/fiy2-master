@@ -1,4 +1,3 @@
-
 import 'package:Fiy/profileedit.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -10,7 +9,6 @@ class ListItem {
 }
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,7 +24,6 @@ class MyApp extends StatelessWidget {
 }
 
 class AddLocation extends StatefulWidget {
-
   @override
   _AddLocationState createState() => _AddLocationState();
 }
@@ -58,20 +55,20 @@ class _AddLocationState extends State<AddLocation> {
                       controller: property,
                       keyboardType: TextInputType.text,
                       validator: (value) {
-                        if(value == null || value.isEmpty){
+                        if (value == null || value.isEmpty) {
                           return 'Enter Property Name';
                         }
                         return null;
                       },
-                      style:
-                      TextStyle(fontSize: 15, fontWeight: FontWeight.bold,
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
                       ),
                       decoration: InputDecoration(
                         labelText: 'Property Name',
                         enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.lightGreen),
                             borderRadius: BorderRadius.circular(10)),
-
                       ),
                     ),
                     SizedBox(
@@ -86,15 +83,15 @@ class _AddLocationState extends State<AddLocation> {
                       },
                       controller: address1,
                       keyboardType: TextInputType.text,
-                      style:
-                      TextStyle(fontSize: 15, fontWeight: FontWeight.bold,
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
                       ),
                       decoration: InputDecoration(
                         labelText: ' Address line 1',
                         enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.lightGreen),
-                            borderRadius: BorderRadius.circular(10)
-                        ),
+                            borderRadius: BorderRadius.circular(10)),
                       ),
                     ),
                     SizedBox(
@@ -108,16 +105,16 @@ class _AddLocationState extends State<AddLocation> {
                         return null;
                       },
                       controller: address2,
-                      keyboardType:TextInputType.text,
-                      style:
-                      TextStyle(fontSize: 15, fontWeight: FontWeight.bold,
+                      keyboardType: TextInputType.text,
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
                       ),
                       decoration: InputDecoration(
                         labelText: 'Address line 2',
                         enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.lightGreen),
-                            borderRadius: BorderRadius.circular(10)
-                        ),
+                            borderRadius: BorderRadius.circular(10)),
                       ),
                     ),
                     SizedBox(
@@ -131,16 +128,16 @@ class _AddLocationState extends State<AddLocation> {
                         return null;
                       },
                       controller: address3,
-                      keyboardType:TextInputType.text,
-                      style:
-                      TextStyle(fontSize: 15, fontWeight: FontWeight.bold,
+                      keyboardType: TextInputType.text,
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
                       ),
                       decoration: InputDecoration(
                         labelText: 'Address line 3',
                         enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.lightGreen),
-                            borderRadius: BorderRadius.circular(10)
-                        ),
+                            borderRadius: BorderRadius.circular(10)),
                       ),
                     ),
                     SizedBox(
@@ -154,16 +151,16 @@ class _AddLocationState extends State<AddLocation> {
                         return null;
                       },
                       controller: city,
-                      keyboardType:TextInputType.text,
-                      style:
-                      TextStyle(fontSize: 15, fontWeight: FontWeight.bold,
+                      keyboardType: TextInputType.text,
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
                       ),
                       decoration: InputDecoration(
                         labelText: 'City',
                         enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.lightGreen),
-                            borderRadius: BorderRadius.circular(10)
-                        ),
+                            borderRadius: BorderRadius.circular(10)),
                       ),
                     ),
                     SizedBox(
@@ -179,15 +176,15 @@ class _AddLocationState extends State<AddLocation> {
                       controller: pin,
                       keyboardType: TextInputType.numberWithOptions(
                           signed: false, decimal: false),
-                      style:
-                      TextStyle(fontSize: 15, fontWeight: FontWeight.bold,
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
                       ),
                       decoration: InputDecoration(
                         labelText: 'Pin code',
                         enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.lightGreen),
-                            borderRadius: BorderRadius.circular(10)
-                        ),
+                            borderRadius: BorderRadius.circular(10)),
                       ),
                     ),
                     SizedBox(
@@ -202,48 +199,245 @@ class _AddLocationState extends State<AddLocation> {
                       },
                       controller: landmark,
                       keyboardType: TextInputType.text,
-                      style:
-                      TextStyle(fontSize: 15, fontWeight: FontWeight.bold,
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
                       ),
                       decoration: InputDecoration(
                         labelText: ' Nearest Landmark',
                         enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.lightGreen),
-                            borderRadius: BorderRadius.circular(10)
-                        ),
+                            borderRadius: BorderRadius.circular(10)),
                       ),
                     ),
                     SizedBox(
                       height: 15,
                     ),
-               DropdownButtonFormField(
-                 decoration: InputDecoration(
-                   labelText: 'Property type ',
-                   enabledBorder: OutlineInputBorder(
-                       borderSide: BorderSide(color: Colors.lightGreen),
-                       borderRadius: BorderRadius.circular(10)
-                   ),
-                 ),
-                isExpanded: true,
-                iconSize: 30.0,
+                    DropdownButtonFormField(
+                      decoration: InputDecoration(
+                        labelText: 'Property type ',
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.lightGreen),
+                            borderRadius: BorderRadius.circular(10)),
+                      ),
+                      isExpanded: true,
+                      iconSize: 30.0,
+                      style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
+                      items: ['Personal', 'Commercial', 'Function Hall'].map(
+                        (val) {
+                          return DropdownMenuItem<String>(
+                            value: val,
+                            child: Text(val),
+                          );
+                        },
+                      ).toList(),
+                      onChanged: (val) {
+                        setState(
+                          () {
+                            _dropDownValue = val.toString();
+                          },
+                        );
+                      },
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Column(
+                      children: <Widget>[
+                        // Only one of them is visible based on 'isMorning' condition.
+                        if (_dropDownValue == 'Commercial')
+                          TextFormField(
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Enter Landmark';
+                              }
+                              return null;
+                            },
+                            maxLength: 150,
+                            controller: landmark,
+                            keyboardType: TextInputType.text,
+                            decoration: InputDecoration(
+                              fillColor: Colors.lightGreen,
+                              enabled: true,
+                              labelText: ' Searching Keyword',
+                              hintText:"Shop Name, short name,mobile number, etc…",
+                             enabledBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.lightGreen),
+                                  borderRadius: BorderRadius.circular(10)),
 
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold,color: Colors.black),
-                items: ['Personal', 'Two', 'Three'].map(
-                      (val) {
-                    return DropdownMenuItem<String>(
-                      value: val,
-                      child: Text(val),
-                    );
-                  },
-                ).toList(),
-                onChanged: (val) {
-                  setState(
-                        () {
-                      _dropDownValue = val.toString();
-                    },
-                  );
-                },
-              ),
+                            ),
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )
+                        else if (_dropDownValue == 'Function Hall')
+                          Container(
+                            width: 350,
+                            height: 350,
+                            //BoxDecoration Widget
+                            decoration: BoxDecoration(
+                              //DecorationImage
+                              border: Border.all(
+                                color: Colors.green,
+                              ), //Border.all
+                              borderRadius: BorderRadius.circular(15),
+                                //BoxShadow
+                                //BoxShadow
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: [
+                                  TextFormField(
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'Enter Landmark ';
+                                      }
+                                      return null;
+                                    },
+                                    controller: landmark,
+                                    keyboardType: TextInputType.text,
+                                    style: TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    decoration: InputDecoration(
+                                      labelText: ' Nearest Landmark1010',
+                                      enabledBorder: OutlineInputBorder(
+                                          borderSide:
+                                          BorderSide(color: Colors.lightGreen),
+                                          borderRadius: BorderRadius.circular(10)),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  TextFormField(
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'Enter Landmark ';
+                                      }
+                                      return null;
+                                    },
+                                    controller: landmark,
+                                    keyboardType: TextInputType.text,
+                                    style: TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    decoration: InputDecoration(
+                                      labelText: ' Nearest Landmark1010',
+                                      enabledBorder: OutlineInputBorder(
+                                          borderSide:
+                                          BorderSide(color: Colors.lightGreen),
+                                          borderRadius: BorderRadius.circular(10)),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  TextFormField(
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'Enter Landmark ';
+                                      }
+                                      return null;
+                                    },
+                                    controller: landmark,
+                                    keyboardType: TextInputType.text,
+                                    style: TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    decoration: InputDecoration(
+                                      labelText: ' Nearest Landmark1010',
+                                      enabledBorder: OutlineInputBorder(
+                                          borderSide:
+                                          BorderSide(color: Colors.lightGreen),
+                                          borderRadius: BorderRadius.circular(10)),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  TextFormField(
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'Enter Landmark ';
+                                      }
+                                      return null;
+                                    },
+                                    controller: landmark,
+                                    keyboardType: TextInputType.text,
+                                    style: TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    decoration: InputDecoration(
+                                      labelText: ' Nearest Landmark1010',
+                                      enabledBorder: OutlineInputBorder(
+                                          borderSide:
+                                          BorderSide(color: Colors.lightGreen),
+                                          borderRadius: BorderRadius.circular(10)),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  TextFormField(
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'Enter Landmark ';
+                                      }
+                                      return null;
+                                    },
+                                    controller: landmark,
+                                    keyboardType: TextInputType.text,
+                                    style: TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    decoration: InputDecoration(
+                                      labelText: ' Nearest Landmark1010',
+                                      enabledBorder: OutlineInputBorder(
+                                          borderSide:
+                                          BorderSide(color: Colors.lightGreen),
+                                          borderRadius: BorderRadius.circular(10)),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                            //BoxDecoration
+                          ),
+                          /*TextFormField(
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Enter Landmark ';
+                              }
+                              return null;
+                            },
+                            controller: landmark,
+                            keyboardType: TextInputType.text,
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            decoration: InputDecoration(
+                              labelText: ' Nearest Landmark1010',
+                              enabledBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Colors.lightGreen),
+                                  borderRadius: BorderRadius.circular(10)),
+                            ),
+                          )*/
+                      ],
+                    ),
                     SizedBox(
                       height: 15,
                     ),
@@ -256,9 +450,7 @@ class _AddLocationState extends State<AddLocation> {
                           ),
                           iconSize: 40,
                           color: Colors.blue,
-                          onPressed: () {
-
-                          },
+                          onPressed: () {},
                         ),
                         SizedBox(
                           width: 20,
@@ -269,9 +461,7 @@ class _AddLocationState extends State<AddLocation> {
                           ),
                           iconSize: 40,
                           color: Colors.blue,
-                          onPressed: () {
-
-                          },
+                          onPressed: () {},
                         ),
                         SizedBox(
                           width: 20,
@@ -282,9 +472,7 @@ class _AddLocationState extends State<AddLocation> {
                           ),
                           iconSize: 40,
                           color: Colors.orange,
-                          onPressed: () {
-
-                          },
+                          onPressed: () {},
                         ),
                         SizedBox(
                           width: 20,
@@ -295,11 +483,8 @@ class _AddLocationState extends State<AddLocation> {
                           ),
                           iconSize: 40,
                           color: Colors.orangeAccent,
-                          onPressed: () {
-
-                          },
+                          onPressed: () {},
                         ),
-
                       ],
                     ),
                     Row(
@@ -313,25 +498,31 @@ class _AddLocationState extends State<AddLocation> {
                           color: Colors.black54,
                           onPressed: () {
                             Navigator.push(
-                                context, new MaterialPageRoute(builder: (context) => new ProfileEdit()));
+                                context,
+                                new MaterialPageRoute(
+                                    builder: (context) => new ProfileEdit()));
                           },
                         ),
-
                         Padding(
                           padding: const EdgeInsets.all(15.0),
                           child: SizedBox(
                             height: 50,
                             width: 100,
                             child: ElevatedButton(
-                              onPressed: ()  {
+                              onPressed: () {
                                 Navigator.push(
-                                    context, new MaterialPageRoute(builder: (context) => new  AddLocation()));
+                                    context,
+                                    new MaterialPageRoute(
+                                        builder: (context) =>
+                                            new AddLocation()));
                               },
                               style: ButtonStyle(
                                 foregroundColor:
-                                MaterialStateProperty.all<Color>(Colors.white),
+                                    MaterialStateProperty.all<Color>(
+                                        Colors.white),
                                 backgroundColor:
-                                MaterialStateProperty.all<Color>(Colors.lightGreen),
+                                    MaterialStateProperty.all<Color>(
+                                        Colors.lightGreen),
                                 shape: MaterialStateProperty.all<
                                     RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
@@ -343,14 +534,14 @@ class _AddLocationState extends State<AddLocation> {
                                 padding: EdgeInsets.all(0),
                                 child: Row(
                                   children: [
-                                    Icon(FontAwesomeIcons.solidSave,),
+                                    Icon(
+                                      FontAwesomeIcons.solidSave,
+                                    ),
                                     SizedBox(
                                       width: 10,
                                     ),
-                                    Text(
-                                        'Save',
-                                        style: TextStyle(fontSize: 12)
-                                    ),
+                                    Text('Save',
+                                        style: TextStyle(fontSize: 12)),
                                   ],
                                 ),
                               ),
@@ -361,54 +552,43 @@ class _AddLocationState extends State<AddLocation> {
                           height: 50,
                           width: 100,
                           child: ElevatedButton(
-                            onPressed: ()  {},
-
+                            onPressed: () {},
                             style: ButtonStyle(
-
-                              foregroundColor:
-                              MaterialStateProperty.all<Color>(Colors.white),
+                              foregroundColor: MaterialStateProperty.all<Color>(
+                                  Colors.white),
                               backgroundColor:
-                              MaterialStateProperty.all<Color>(Colors.blue),
+                                  MaterialStateProperty.all<Color>(Colors.blue),
                               shape: MaterialStateProperty.all<
                                   RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                               ),
-
                             ),
                             child: Padding(
                               padding: EdgeInsets.all(0),
                               child: Row(
                                 children: [
-                                  Icon(FontAwesomeIcons.solidWindowClose,),
+                                  Icon(
+                                    FontAwesomeIcons.solidWindowClose,
+                                  ),
                                   SizedBox(
                                     width: 10,
                                   ),
-                                  Text(
-                                      'Close ',
-                                      style: TextStyle(fontSize: 12)
-                                  ),
-
-
-
+                                  Text('Close ',
+                                      style: TextStyle(fontSize: 12)),
                                 ],
                               ),
-
                             ),
                           ),
                         ),
                       ],
                     ),
-
-
-                  ]
-              ),
+                  ]),
             ),
           ),
         ),
       ),
-
     );
   }
 }
