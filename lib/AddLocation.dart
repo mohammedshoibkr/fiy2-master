@@ -249,199 +249,324 @@ class _AddLocationState extends State<AddLocation> {
                       children: <Widget>[
                         // Only one of them is visible based on 'isMorning' condition.
                         if (_dropDownValue == 'Commercial')
-                          TextFormField(
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Enter Landmark';
-                              }
-                              return null;
-                            },
-                            maxLength: 150,
-                            controller: landmark,
-                            keyboardType: TextInputType.text,
-                            decoration: InputDecoration(
-                              fillColor: Colors.lightGreen,
-                              enabled: true,
-                              labelText: ' Searching Keyword',
-                              hintText:"Shop Name, short name,mobile number, etc…",
-                             enabledBorder: OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: Colors.lightGreen),
-                                  borderRadius: BorderRadius.circular(10)),
-
-                            ),
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          )
-                        else if (_dropDownValue == 'Function Hall')
-                          Container(
-                            width: 350,
-                            height: 350,
-                            //BoxDecoration Widget
-                            decoration: BoxDecoration(
-                              //DecorationImage
-                              border: Border.all(
-                                color: Colors.green,
-                              ), //Border.all
-                              borderRadius: BorderRadius.circular(15),
-                                //BoxShadow
-                                //BoxShadow
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
+                          Column(
+                            children: [
+                              TextFormField(
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Enter Landmark';
+                                  }
+                                  return null;
+                                },
+                                maxLength: 150,
+                                controller: landmark,
+                                keyboardType: TextInputType.text,
+                                decoration: InputDecoration(
+                                  fillColor: Colors.lightGreen,
+                                  enabled: true,
+                                  labelText: ' Searching Keyword',
+                                  hintText:"Shop Name, short name,mobile number, etc…",
+                                 enabledBorder: OutlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Colors.lightGreen),
+                                      borderRadius: BorderRadius.circular(10)),
+                                ),
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  TextFormField(
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        return 'Enter Landmark ';
-                                      }
-                                      return null;
-                                    },
-                                    controller: landmark,
-                                    keyboardType: TextInputType.text,
-                                    style: TextStyle(
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.bold,
+                                  IconButton(
+                                    icon: Icon(
+                                      FontAwesomeIcons.mapMarked,
                                     ),
-                                    decoration: InputDecoration(
-                                      labelText: ' Nearest Landmark1010',
-                                      enabledBorder: OutlineInputBorder(
-                                          borderSide:
-                                          BorderSide(color: Colors.lightGreen),
-                                          borderRadius: BorderRadius.circular(10)),
-                                    ),
+                                    iconSize: 40,
+                                    color: Colors.blue,
+                                    onPressed: () {},
                                   ),
                                   SizedBox(
-                                    height: 10,
+                                    width: 20,
                                   ),
-                                  TextFormField(
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        return 'Enter Landmark ';
-                                      }
-                                      return null;
-                                    },
-                                    controller: landmark,
-                                    keyboardType: TextInputType.text,
-                                    style: TextStyle(
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.bold,
+                                  IconButton(
+                                    icon: Icon(
+                                      FontAwesomeIcons.photoVideo,
                                     ),
-                                    decoration: InputDecoration(
-                                      labelText: ' Nearest Landmark1010',
-                                      enabledBorder: OutlineInputBorder(
-                                          borderSide:
-                                          BorderSide(color: Colors.lightGreen),
-                                          borderRadius: BorderRadius.circular(10)),
+                                    iconSize: 40,
+                                    color: Colors.blue,
+                                    onPressed: () {},
+                                  ),
+
+                                ],
+                              ),
+                            ],
+                          )
+
+                        else if (_dropDownValue == 'Function Hall')
+                          Column(
+                            children: [
+                              Container(
+                                width: 350,
+                                height: 400,
+                                //BoxDecoration Widget
+                                decoration: BoxDecoration(
+                                  //DecorationImage
+                                  border: Border.all(
+                                    color: Colors.green,
+                                  ), //Border.all
+                                  borderRadius: BorderRadius.circular(15),
+                                    //BoxShadow
+                                    //BoxShadow
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    children: [
+                                      TextFormField(
+                                        validator: (value) {
+                                          if (value == null || value.isEmpty) {
+                                            return 'Enter Landmark ';
+                                          }
+                                          return null;
+                                        },
+                                        controller: landmark,
+                                        keyboardType: TextInputType.text,
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                        decoration: InputDecoration(
+                                          labelText: 'Function Name',
+                                          enabledBorder: OutlineInputBorder(
+                                              borderSide:
+                                              BorderSide(color: Colors.lightGreen),
+                                              borderRadius: BorderRadius.circular(10)),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      TextFormField(
+                                        validator: (value) {
+                                          if (value == null || value.isEmpty) {
+                                            return 'Enter Landmark ';
+                                          }
+                                          return null;
+                                        },
+                                        controller: landmark,
+                                        keyboardType: TextInputType.text,
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                        decoration: InputDecoration(
+                                          labelText: ' Description ',
+                                          enabledBorder: OutlineInputBorder(
+                                              borderSide:
+                                              BorderSide(color: Colors.lightGreen),
+                                              borderRadius: BorderRadius.circular(10)),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      TextFormField(
+                                        validator: (value) {
+                                          if (value == null || value.isEmpty) {
+                                            return 'Enter Landmark ';
+                                          }
+                                          return null;
+                                        },
+                                        controller: landmark,
+                                        keyboardType: TextInputType.text,
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                        decoration: InputDecoration(
+                                          labelText: 'Date',
+                                          enabledBorder: OutlineInputBorder(
+                                              borderSide:
+                                              BorderSide(color: Colors.lightGreen),
+                                              borderRadius: BorderRadius.circular(10)),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      TextFormField(
+                                        validator: (value) {
+                                          if (value == null || value.isEmpty) {
+                                            return 'Enter Landmark ';
+                                          }
+                                          return null;
+                                        },
+                                        controller: landmark,
+                                        keyboardType: TextInputType.text,
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                        decoration: InputDecoration(
+                                          labelText: ' Start Time',
+                                          enabledBorder: OutlineInputBorder(
+                                              borderSide:
+                                              BorderSide(color: Colors.lightGreen),
+                                              borderRadius: BorderRadius.circular(10)),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      TextFormField(
+                                        validator: (value) {
+                                          if (value == null || value.isEmpty) {
+                                            return 'Enter Landmark ';
+                                          }
+                                          return null;
+                                        },
+                                        controller: landmark,
+                                        keyboardType: TextInputType.text,
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                        decoration: InputDecoration(
+                                          labelText: ' End Time',
+                                          enabledBorder: OutlineInputBorder(
+                                              borderSide:
+                                              BorderSide(color: Colors.lightGreen),
+                                              borderRadius: BorderRadius.circular(10)),
+                                        ),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          IconButton(
+                                            icon: Icon(
+                                              FontAwesomeIcons.syncAlt,
+                                            ),
+                                            iconSize: 35,
+                                            color: Colors.blue,
+                                            onPressed: () {},
+                                          ),
+                                          IconButton(
+                                            icon: Icon(
+                                              FontAwesomeIcons.trash,
+                                            ),
+                                            iconSize: 35,
+                                            color: Colors.black45,
+                                            onPressed: () {},
+                                          ),
+                                          IconButton(
+                                            icon: Icon(
+                                              FontAwesomeIcons.plusCircle,
+                                            ),
+                                            iconSize: 35,
+                                            color: Colors.orange,
+                                            onPressed: () {},
+                                          ),
+                                        ],
+                                      ),
+
+                                    ],
+                                  ),
+                                )
+                                //BoxDecoration
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  IconButton(
+                                    icon: Icon(
+                                      FontAwesomeIcons.mapMarked,
                                     ),
+                                    iconSize: 40,
+                                    color: Colors.blue,
+                                    onPressed: () {},
                                   ),
                                   SizedBox(
-                                    height: 10,
+                                    width: 20,
                                   ),
-                                  TextFormField(
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        return 'Enter Landmark ';
-                                      }
-                                      return null;
-                                    },
-                                    controller: landmark,
-                                    keyboardType: TextInputType.text,
-                                    style: TextStyle(
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.bold,
+                                  IconButton(
+                                    icon: Icon(
+                                      FontAwesomeIcons.photoVideo,
                                     ),
-                                    decoration: InputDecoration(
-                                      labelText: ' Nearest Landmark1010',
-                                      enabledBorder: OutlineInputBorder(
-                                          borderSide:
-                                          BorderSide(color: Colors.lightGreen),
-                                          borderRadius: BorderRadius.circular(10)),
-                                    ),
+                                    iconSize: 40,
+                                    color: Colors.blue,
+                                    onPressed: () {},
                                   ),
                                   SizedBox(
-                                    height: 10,
+                                    width: 20,
                                   ),
-                                  TextFormField(
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        return 'Enter Landmark ';
-                                      }
-                                      return null;
-                                    },
-                                    controller: landmark,
-                                    keyboardType: TextInputType.text,
-                                    style: TextStyle(
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.bold,
+                                  IconButton(
+                                    icon: Icon(
+                                      FontAwesomeIcons.solidAddressBook,
                                     ),
-                                    decoration: InputDecoration(
-                                      labelText: ' Nearest Landmark1010',
-                                      enabledBorder: OutlineInputBorder(
-                                          borderSide:
-                                          BorderSide(color: Colors.lightGreen),
-                                          borderRadius: BorderRadius.circular(10)),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  TextFormField(
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        return 'Enter Landmark ';
-                                      }
-                                      return null;
-                                    },
-                                    controller: landmark,
-                                    keyboardType: TextInputType.text,
-                                    style: TextStyle(
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    decoration: InputDecoration(
-                                      labelText: ' Nearest Landmark1010',
-                                      enabledBorder: OutlineInputBorder(
-                                          borderSide:
-                                          BorderSide(color: Colors.lightGreen),
-                                          borderRadius: BorderRadius.circular(10)),
-                                    ),
+                                    iconSize: 40,
+                                    color: Colors.orange,
+                                    onPressed: () {},
                                   ),
                                 ],
                               ),
-                            )
-                            //BoxDecoration
+                            ],
+                          )
+                        else
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              IconButton(
+                                icon: Icon(
+                                  FontAwesomeIcons.mapMarked,
+                                ),
+                                iconSize: 40,
+                                color: Colors.blue,
+                                onPressed: () {},
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              IconButton(
+                                icon: Icon(
+                                  FontAwesomeIcons.photoVideo,
+                                ),
+                                iconSize: 40,
+                                color: Colors.blue,
+                                onPressed: () {},
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              IconButton(
+                                icon: Icon(
+                                  FontAwesomeIcons.solidAddressBook,
+                                ),
+                                iconSize: 40,
+                                color: Colors.orange,
+                                onPressed: () {},
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              IconButton(
+                                icon: Icon(
+                                  FontAwesomeIcons.solidBell,
+                                ),
+                                iconSize: 40,
+                                color: Colors.orangeAccent,
+                                onPressed: () {},
+                              ),
+                            ],
                           ),
-                          /*TextFormField(
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Enter Landmark ';
-                              }
-                              return null;
-                            },
-                            controller: landmark,
-                            keyboardType: TextInputType.text,
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            decoration: InputDecoration(
-                              labelText: ' Nearest Landmark1010',
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide:
-                                      BorderSide(color: Colors.lightGreen),
-                                  borderRadius: BorderRadius.circular(10)),
-                            ),
-                          )*/
+
                       ],
                     ),
                     SizedBox(
                       height: 15,
                     ),
-                    Row(
+                   /* Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         IconButton(
@@ -486,7 +611,7 @@ class _AddLocationState extends State<AddLocation> {
                           onPressed: () {},
                         ),
                       ],
-                    ),
+                    ),*/
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
