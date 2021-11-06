@@ -560,7 +560,6 @@ class _AddLocationState extends State<AddLocation> {
                               ),
                             ],
                           ),
-
                       ],
                     ),
                     SizedBox(
