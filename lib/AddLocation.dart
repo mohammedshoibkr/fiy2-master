@@ -566,52 +566,6 @@ class _AddLocationState extends State<AddLocation> {
                     SizedBox(
                       height: 15,
                     ),
-                   /* Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        IconButton(
-                          icon: Icon(
-                            FontAwesomeIcons.mapMarked,
-                          ),
-                          iconSize: 40,
-                          color: Colors.blue,
-                          onPressed: () {},
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        IconButton(
-                          icon: Icon(
-                            FontAwesomeIcons.photoVideo,
-                          ),
-                          iconSize: 40,
-                          color: Colors.blue,
-                          onPressed: () {},
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        IconButton(
-                          icon: Icon(
-                            FontAwesomeIcons.solidAddressBook,
-                          ),
-                          iconSize: 40,
-                          color: Colors.orange,
-                          onPressed: () {},
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        IconButton(
-                          icon: Icon(
-                            FontAwesomeIcons.solidBell,
-                          ),
-                          iconSize: 40,
-                          color: Colors.orangeAccent,
-                          onPressed: () {},
-                        ),
-                      ],
-                    ),*/
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
