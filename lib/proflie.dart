@@ -59,7 +59,6 @@ class _ProflieState extends State<Proflie> {
           name.text=register!.name;
           age.text=register!.age;
         });
-       /* Timer(Duration(seconds: 2),() => Get.to(ph!=null ?Proflie(): MyHomePage()));*/
       }
       else{
       }
@@ -118,15 +117,6 @@ class _ProflieState extends State<Proflie> {
     String url = (await ref.getDownloadURL()).toString();
     print(url);
     _downloadurl=url;
-/*        .then((value) =>
-    {
-
-      print("Upload file path ${value.ref.fullPath}")
-
-    }).onError((error, stackTrace) =>
-    {
-      print("Upload file path error ${error.toString()} ")
-    });*/
   }
     @override
     Widget build(BuildContext context) {
@@ -155,10 +145,6 @@ class _ProflieState extends State<Proflie> {
                           _image!, fit: BoxFit.cover) :CircleAvatar(
                           radius: 60,
                           backgroundImage: AssetImage("assets/images/proflie.png"),
-                         /* image: NetworkImage('https://avatars.githubusercontent.com/u/86800136?s=20&v=4'),*/
-                          /*fit: BoxFit.none,
-                          width: 80.0,
-                          height: 80.0,*/
                           child: InkWell(
                             onTap: () {
                              /* getImage();*/
@@ -171,11 +157,8 @@ class _ProflieState extends State<Proflie> {
                               onPressed: () {
                                 getImage();
                               }
-
                           ),
-
                         ),
-
                         ),
                       ),
                       SizedBox(
@@ -228,7 +211,6 @@ class _ProflieState extends State<Proflie> {
                           enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.orange),
                               borderRadius: BorderRadius.circular(10)
-
                           ),
                         ),
                       ),

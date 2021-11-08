@@ -65,7 +65,7 @@ class _ProfileEditState extends State<ProfileEdit> {
             child: Column(children: [
               Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: Expanded(
+                /*child: Expanded(*/
                   child: Card(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0),
@@ -261,7 +261,7 @@ class _ProfileEditState extends State<ProfileEdit> {
                           ),
                         ),
                       ),
-                ),
+                /*),*/
                   ),
             ]),
           ),

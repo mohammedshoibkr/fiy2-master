@@ -1,6 +1,14 @@
+import 'package:Fiy/location.dart';
 import 'package:Fiy/profileedit.dart';
+import 'package:Fiy/proflie.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'ProflieModel.dart';
+
+Location? addnew;
 
 class ListItem {
   int value;
@@ -29,6 +37,31 @@ class AddLocation extends StatefulWidget {
 }
 
 class _AddLocationState extends State<AddLocation> {
+  final _formKey = GlobalKey<FormState>();
+
+  void initState() {
+    SharedPreferences sharedPreferences;
+    super.initState();
+    SharedPreferences.getInstance().then((SharedPreferences sp) {
+      sharedPreferences = sp;
+      if( sp.containsKey(ProflieModel.ph_key) )
+      {
+        //in this case the app is already installed, so we need to get details of user
+        ph = sp.getString(ProflieModel.ph_key);
+        FirebaseFirestore.instance
+            .collection('users')
+            .where(ProflieModel.ph_key, isEqualTo: ph)
+            .get().then((value)  {
+          userDocId = value.docs[0].id;
+          addnew = Location(property: value.docs[0].data()[Location.lo_property],address1: value.docs[0].data()[Location.lo_address1], address2:  value.docs[0].data()[Location.lo_address2], address3: value.docs[0].data()[Location.lo_address3],city:  value.docs[0].data()[Location.lo_city],pin:  value.docs[0].data()[Location.lo_pin],landmark:  value.docs[0].data()[Location.lo_landmark],search:  value.docs[0].data()[Location.lo_search],function:  value.docs[0].data()[Location.lo_function],description:  value.docs[0].data()[Location.lo_description],date:  value.docs[0].data()[Location.lo_date] ,start:  value.docs[0].data()[Location.lo_start],end:  value.docs[0].data()[Location.lo_end]);
+        });
+      }
+      else{
+      }
+      setState(() {});
+    });
+
+  }
   final property = TextEditingController();
   final address1 = TextEditingController();
   final address2 = TextEditingController();
@@ -36,8 +69,24 @@ class _AddLocationState extends State<AddLocation> {
   final city = TextEditingController();
   final pin = TextEditingController();
   final landmark = TextEditingController();
-
+  final search = TextEditingController();
+  final function = TextEditingController();
+  final description = TextEditingController();
+  final date = TextEditingController();
+  final start = TextEditingController();
+  final end = TextEditingController();
   String? _dropDownValue;
+
+  Future<void> insertData(final register) async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    firestore.collection("address").add(register)
+        .then((DocumentReference document) {
+      print(document.id);
+    }).catchError((e) {
+      print(e);
+
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -259,12 +308,12 @@ class _AddLocationState extends State<AddLocation> {
                                   return null;
                                 },
                                 maxLength: 150,
-                                controller: landmark,
+                                controller: search,
                                 keyboardType: TextInputType.text,
                                 decoration: InputDecoration(
                                   fillColor: Colors.lightGreen,
                                   enabled: true,
-                                  labelText: ' Searching Keyword',
+                                  labelText: ' Search Keyword',
                                   hintText:"Shop Name, short name,mobile number, etc…",
                                  enabledBorder: OutlineInputBorder(
                                       borderSide:
@@ -331,7 +380,7 @@ class _AddLocationState extends State<AddLocation> {
                                           }
                                           return null;
                                         },
-                                        controller: landmark,
+                                        controller: function,
                                         keyboardType: TextInputType.text,
                                         style: TextStyle(
                                           fontSize: 14,
@@ -355,7 +404,7 @@ class _AddLocationState extends State<AddLocation> {
                                           }
                                           return null;
                                         },
-                                        controller: landmark,
+                                        controller: description,
                                         keyboardType: TextInputType.text,
                                         style: TextStyle(
                                           fontSize: 14,
@@ -379,7 +428,7 @@ class _AddLocationState extends State<AddLocation> {
                                           }
                                           return null;
                                         },
-                                        controller: landmark,
+                                        controller: date,
                                         keyboardType: TextInputType.text,
                                         style: TextStyle(
                                           fontSize: 14,
@@ -403,7 +452,7 @@ class _AddLocationState extends State<AddLocation> {
                                           }
                                           return null;
                                         },
-                                        controller: landmark,
+                                        controller: start,
                                         keyboardType: TextInputType.text,
                                         style: TextStyle(
                                           fontSize: 14,
@@ -427,7 +476,7 @@ class _AddLocationState extends State<AddLocation> {
                                           }
                                           return null;
                                         },
-                                        controller: landmark,
+                                        controller: end,
                                         keyboardType: TextInputType.text,
                                         style: TextStyle(
                                           fontSize: 14,
@@ -587,12 +636,16 @@ class _AddLocationState extends State<AddLocation> {
                             height: 50,
                             width: 100,
                             child: ElevatedButton(
-                              onPressed: () {
-                                Navigator.push(
+                              onPressed: () async{
+
+                                  insertData(addnew!.toMap());
+
+
+                                /*Navigator.push(
                                     context,
                                     new MaterialPageRoute(
                                         builder: (context) =>
-                                            new AddLocation()));
+                                            new AddLocation()));*/
                               },
                               style: ButtonStyle(
                                 foregroundColor:
