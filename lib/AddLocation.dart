@@ -2,10 +2,13 @@ import 'package:Fiy/location.dart';
 import 'package:Fiy/profileedit.dart';
 import 'package:Fiy/proflie.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'ProflieModel.dart';
+import 'package:contacts_service/contacts_service.dart';
+import 'package:permission_handler/permission_handler.dart';
 Location? addnew;
 
 class ListItem {
@@ -740,7 +743,26 @@ class _AddLocationState extends State<AddLocation> {
                                 ),
                                 iconSize: 40,
                                 color: Colors.orange,
-                                onPressed: () {
+                                onPressed: () async{
+                                  final PermissionStatus permissionStatus = await _getPermission();
+                                  if (permissionStatus == PermissionStatus.granted) {
+                                    //We can now access our contacts here
+                                  } else {
+                                    //If permissions have been denied show standard cupertino alert dialog
+                                    showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) => CupertinoAlertDialog(
+                                          title: Text('Permissions error'),
+                                          content: Text('Please enable contacts access '
+                                              'permission in system settings'),
+                                          actions: <Widget>[
+                                            CupertinoDialogAction(
+                                              child: Text('OK'),
+                                              onPressed: () => Navigator.of(context).pop(),
+                                            )
+                                          ],
+                                        ));
+                                  }
 
                                 },
                               ),
@@ -867,5 +889,17 @@ class _AddLocationState extends State<AddLocation> {
         ),
       ),
     );
+  }
+}
+Future<PermissionStatus> _getPermission() async {
+  final PermissionStatus permission = await Permission.contacts.status;
+  if (permission != PermissionStatus.granted &&
+      permission != PermissionStatus.denied) {
+    final Map<Permission, PermissionStatus> permissionStatus =
+    await [Permission.contacts].request();
+    return permissionStatus[Permission.contacts] ??
+        PermissionStatus.limited;
+  } else {
+    return permission;
   }
 }
