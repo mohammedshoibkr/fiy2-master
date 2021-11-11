@@ -187,11 +187,6 @@ class _ProflieState extends State<Proflie> {
                       SizedBox(
                         height: 30,
                       ),
-                      _genderWidget(true, true),
-
-                      SizedBox(
-                        height: 30,
-                      ),
                       TextFormField(
                         validator: (value) {
                        if (value == null || value.isEmpty) {
@@ -214,6 +209,12 @@ class _ProflieState extends State<Proflie> {
                           ),
                         ),
                       ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      _genderWidget(true, true),
+
+
                       SizedBox(
                         height: 60,
                       ),

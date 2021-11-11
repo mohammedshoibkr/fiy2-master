@@ -254,21 +254,6 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  /*void intiState(){
-    getValidationData().whenComplete(() async{
-      Timer(Duration(seconds: 2),() => Get.to(finalphone==null ? MyHomePage(): Proflie()));
-      Timer(Duration(seconds: 2),() => Get.to(finalphone==null ? MyHomePage(): Proflie()));
-    });
-  }
-  Future getValidationData() async{
-    final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    var obtainedphone = sharedPreferences.getString('phone');
-    setState(() {
-      finalphone=obtainedphone;
-    });
-    print(finalphone);
-  }
-*/
 
   List<ListItem> _dropdownItems = [
     ListItem(91, "(+91) India"),
@@ -290,23 +275,6 @@ class _MyHomePageState extends State<MyHomePage> {
     }
     return items;
   }
-
-  /*void showNotification() {
-    setState(() {
-      _counter++;
-    });
-    flutterLocalNotificationsPlugin.show(
-        0,
-        "Testing $_counter",
-        "welcome to FIY ",
-        NotificationDetails(
-            android: AndroidNotificationDetails(
-                channel.id, channel.name, channel.description,
-                importance: Importance.high,
-                color: Colors.blue,
-                playSound: true,
-                icon: '@mipmap/ic_launcher')));
-  }*/
 
   @override
   Widget build(BuildContext context) {

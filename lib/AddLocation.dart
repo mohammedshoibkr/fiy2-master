@@ -5,9 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'ProflieModel.dart';
-
 Location? addnew;
 
 class ListItem {
@@ -37,6 +35,12 @@ class AddLocation extends StatefulWidget {
 }
 
 class _AddLocationState extends State<AddLocation> {
+  Icon fab = Icon(
+      FontAwesomeIcons.plusCircle,
+    color: Colors.white,
+  );
+
+  int fabIconNumber = 0;
   final _formKey = GlobalKey<FormState>();
 
   void initState() {
@@ -75,6 +79,10 @@ class _AddLocationState extends State<AddLocation> {
   final date = TextEditingController();
   final start = TextEditingController();
   final end = TextEditingController();
+  final description2 = TextEditingController();
+  final date2 = TextEditingController();
+  final start2 = TextEditingController();
+  final end2 = TextEditingController();
   String? _dropDownValue;
 
   Future<void> insertData(final register) async {
@@ -509,54 +517,192 @@ class _AddLocationState extends State<AddLocation> {
                                             color: Colors.black45,
                                             onPressed: () {},
                                           ),
-                                          IconButton(
+                                          /*IconButton(
                                             icon: Icon(
                                               FontAwesomeIcons.plusCircle,
                                             ),
                                             iconSize: 35,
                                             color: Colors.orange,
                                             onPressed: () {},
-                                          ),
+                                          ),*/
+                                          FloatingActionButton(
+                                            child: fab,
+                                            mini: true,
+                                            onPressed: () => setState(() {
+                                              if (fabIconNumber == 0) {
+                                                fab = Icon(
+                                                  FontAwesomeIcons.minusCircle,
+                                                  color: Colors.white,
+                                                );
+                                                fabIconNumber = 1;
+                                              } else {
+                                                fab = Icon(FontAwesomeIcons.plusCircle, color: Colors.white,);
+                                                fabIconNumber = 0;
+                                              }
+                                            }),
+                                          )
                                         ],
                                       ),
-
                                     ],
                                   ),
                                 )
                                 //BoxDecoration
                               ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                              SizedBox(
+                                height: 20,
+                              ),
+                              if (fabIconNumber == 1)
+                              Column(
                                 children: [
-                                  IconButton(
-                                    icon: Icon(
-                                      FontAwesomeIcons.mapMarked,
-                                    ),
-                                    iconSize: 40,
-                                    color: Colors.blue,
-                                    onPressed: () {},
+                                  Container(
+                                      width: 350,
+                                      height: 300,
+                                      //BoxDecoration Widget
+                                      decoration: BoxDecoration(
+                                        //DecorationImage
+                                        border: Border.all(
+                                          color: Colors.green,
+                                        ), //Border.all
+                                        borderRadius: BorderRadius.circular(15),
+                                        //BoxShadow
+                                        //BoxShadow
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          children: [
+                                            TextFormField(
+                                              validator: (value) {
+                                                if (value == null || value.isEmpty) {
+                                                  return 'Enter Landmark ';
+                                                }
+                                                return null;
+                                              },
+                                              controller: description2,
+                                              keyboardType: TextInputType.text,
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                              decoration: InputDecoration(
+                                                labelText: ' Description ',
+                                                enabledBorder: OutlineInputBorder(
+                                                    borderSide:
+                                                    BorderSide(color: Colors.lightGreen),
+                                                    borderRadius: BorderRadius.circular(10)),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            TextFormField(
+                                              validator: (value) {
+                                                if (value == null || value.isEmpty) {
+                                                  return 'Enter Landmark ';
+                                                }
+                                                return null;
+                                              },
+                                              controller: date2,
+                                              keyboardType: TextInputType.text,
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                              decoration: InputDecoration(
+                                                labelText: 'Date',
+                                                enabledBorder: OutlineInputBorder(
+                                                    borderSide:
+                                                    BorderSide(color: Colors.lightGreen),
+                                                    borderRadius: BorderRadius.circular(10)),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            TextFormField(
+                                              validator: (value) {
+                                                if (value == null || value.isEmpty) {
+                                                  return 'Enter Landmark ';
+                                                }
+                                                return null;
+                                              },
+                                              controller: start2,
+                                              keyboardType: TextInputType.text,
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                              decoration: InputDecoration(
+                                                labelText: ' Start Time',
+                                                enabledBorder: OutlineInputBorder(
+                                                    borderSide:
+                                                    BorderSide(color: Colors.lightGreen),
+                                                    borderRadius: BorderRadius.circular(10)),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            TextFormField(
+                                              validator: (value) {
+                                                if (value == null || value.isEmpty) {
+                                                  return 'Enter Landmark ';
+                                                }
+                                                return null;
+                                              },
+                                              controller: end2,
+                                              keyboardType: TextInputType.text,
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                              decoration: InputDecoration(
+                                                labelText: ' End Time',
+                                                enabledBorder: OutlineInputBorder(
+                                                    borderSide:
+                                                    BorderSide(color: Colors.lightGreen),
+                                                    borderRadius: BorderRadius.circular(10)),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      )
+                                    //BoxDecoration
                                   ),
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  IconButton(
-                                    icon: Icon(
-                                      FontAwesomeIcons.photoVideo,
-                                    ),
-                                    iconSize: 40,
-                                    color: Colors.blue,
-                                    onPressed: () {},
-                                  ),
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  IconButton(
-                                    icon: Icon(
-                                      FontAwesomeIcons.solidAddressBook,
-                                    ),
-                                    iconSize: 40,
-                                    color: Colors.orange,
-                                    onPressed: () {},
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      IconButton(
+                                        icon: Icon(
+                                          FontAwesomeIcons.mapMarked,
+                                        ),
+                                        iconSize: 40,
+                                        color: Colors.blue,
+                                        onPressed: () {},
+                                      ),
+                                      SizedBox(
+                                        width: 20,
+                                      ),
+                                      IconButton(
+                                        icon: Icon(
+                                          FontAwesomeIcons.photoVideo,
+                                        ),
+                                        iconSize: 40,
+                                        color: Colors.blue,
+                                        onPressed: () {},
+                                      ),
+                                      SizedBox(
+                                        width: 20,
+                                      ),
+                                      IconButton(
+                                        icon: Icon(
+                                          FontAwesomeIcons.solidAddressBook,
+                                        ),
+                                        iconSize: 40,
+                                        color: Colors.orange,
+                                        onPressed: () {},
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
@@ -594,7 +740,9 @@ class _AddLocationState extends State<AddLocation> {
                                 ),
                                 iconSize: 40,
                                 color: Colors.orange,
-                                onPressed: () {},
+                                onPressed: () {
+
+                                },
                               ),
                               SizedBox(
                                 width: 20,
@@ -637,10 +785,8 @@ class _AddLocationState extends State<AddLocation> {
                             width: 100,
                             child: ElevatedButton(
                               onPressed: () async{
-
-                                  insertData(addnew!.toMap());
-
-
+                                addnew = Location(property:property.text,address1:address1.text, address2: address2.text, address3: address3.text, city: city.text, pin: pin.text, landmark: landmark.text, search: search.text, function: function.text, description: description.text, date: date.text, start: start.text, end: end.text);
+                                insertData(addnew!.toMap());
                                 /*Navigator.push(
                                     context,
                                     new MaterialPageRoute(

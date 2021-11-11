@@ -1,13 +1,12 @@
 import 'package:Fiy/DashBoard.dart';
+import 'package:Fiy/location.dart';
 import 'package:Fiy/proflie.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'AddLocation.dart';
 import 'ProflieModel.dart';
-
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -35,6 +34,7 @@ class ProfileEdit extends StatefulWidget {
 class _ProfileEditState extends State<ProfileEdit> {
   var len = (register?.imgurl ?? 0).toString();
   var nam = (register?.name ?? 0).toString();
+  var pro= (addnew?.property ?? 0).toString();
 
 
   void initState() {
@@ -54,6 +54,7 @@ class _ProfileEditState extends State<ProfileEdit> {
         setState(() {});
       });
     });
+    print(pro);
   }
   @override
   Widget build(BuildContext context) {
@@ -162,12 +163,19 @@ class _ProfileEditState extends State<ProfileEdit> {
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
+
+
                                       ],
                                     ),
                                   ),
                                 ),
+                              ListTile(
+                                leading: Icon(Icons.home),
+                                title: Text(pro),
+                                onTap: () => {},
+                              ),
                               SizedBox(
-                                height: 340,
+                                height: 280,
                               ),
                               Row(
                                 children: [
