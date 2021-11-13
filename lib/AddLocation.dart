@@ -7,9 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'ProflieModel.dart';
-import 'package:contacts_service/contacts_service.dart';
-import 'package:permission_handler/permission_handler.dart';
 Location? addnew;
+
+var pro= (addnew?.property ?? 0).toString();
 
 class ListItem {
   int value;
@@ -56,11 +56,12 @@ class _AddLocationState extends State<AddLocation> {
         //in this case the app is already installed, so we need to get details of user
         ph = sp.getString(ProflieModel.ph_key);
         FirebaseFirestore.instance
-            .collection('users')
+            .collection('address')
             .where(ProflieModel.ph_key, isEqualTo: ph)
             .get().then((value)  {
           userDocId = value.docs[0].id;
           addnew = Location(property: value.docs[0].data()[Location.lo_property],address1: value.docs[0].data()[Location.lo_address1], address2:  value.docs[0].data()[Location.lo_address2], address3: value.docs[0].data()[Location.lo_address3],city:  value.docs[0].data()[Location.lo_city],pin:  value.docs[0].data()[Location.lo_pin],landmark:  value.docs[0].data()[Location.lo_landmark],search:  value.docs[0].data()[Location.lo_search],function:  value.docs[0].data()[Location.lo_function],description:  value.docs[0].data()[Location.lo_description],date:  value.docs[0].data()[Location.lo_date] ,start:  value.docs[0].data()[Location.lo_start],end:  value.docs[0].data()[Location.lo_end]);
+          property.text=addnew!.property;
         });
       }
       else{
@@ -68,6 +69,7 @@ class _AddLocationState extends State<AddLocation> {
       setState(() {});
     });
 
+    print(pro);
   }
   final property = TextEditingController();
   final address1 = TextEditingController();
@@ -95,7 +97,6 @@ class _AddLocationState extends State<AddLocation> {
       print(document.id);
     }).catchError((e) {
       print(e);
-
     });
   }
 
@@ -744,7 +745,7 @@ class _AddLocationState extends State<AddLocation> {
                                 iconSize: 40,
                                 color: Colors.orange,
                                 onPressed: () async{
-                                  final PermissionStatus permissionStatus = await _getPermission();
+                                 /* final PermissionStatus permissionStatus = await _getPermission();
                                   if (permissionStatus == PermissionStatus.granted) {
                                     //We can now access our contacts here
                                   } else {
@@ -762,7 +763,7 @@ class _AddLocationState extends State<AddLocation> {
                                             )
                                           ],
                                         ));
-                                  }
+                                  }*/
 
                                 },
                               ),
@@ -807,8 +808,26 @@ class _AddLocationState extends State<AddLocation> {
                             width: 100,
                             child: ElevatedButton(
                               onPressed: () async{
-                                addnew = Location(property:property.text,address1:address1.text, address2: address2.text, address3: address3.text, city: city.text, pin: pin.text, landmark: landmark.text, search: search.text, function: function.text, description: description.text, date: date.text, start: start.text, end: end.text);
-                                insertData(addnew!.toMap());
+                                if(addnew==null) {
+                                  addnew = Location(property: property.text,
+                                      address1: address1.text,
+                                      address2: address2.text,
+                                      address3: address3.text,
+                                      city: city.text,
+                                      pin: pin.text,
+                                      landmark: landmark.text,
+                                      search: search.text,
+                                      function: function.text,
+                                      description: description.text,
+                                      date: date.text,
+                                      start: start.text,
+                                      end: end.text);
+                                  insertData(addnew!.toMap());
+
+                                }
+                                else{
+                                  addnew!.property = property.text;
+                                }
                                 /*Navigator.push(
                                     context,
                                     new MaterialPageRoute(
@@ -891,7 +910,7 @@ class _AddLocationState extends State<AddLocation> {
     );
   }
 }
-Future<PermissionStatus> _getPermission() async {
+/*Future<PermissionStatus> _getPermission() async {
   final PermissionStatus permission = await Permission.contacts.status;
   if (permission != PermissionStatus.granted &&
       permission != PermissionStatus.denied) {
@@ -902,4 +921,4 @@ Future<PermissionStatus> _getPermission() async {
   } else {
     return permission;
   }
-}
+}*/
