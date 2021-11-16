@@ -67,154 +67,224 @@ class _ProfileEditState extends State<ProfileEdit> {
                   Padding(
                     padding: const EdgeInsets.all(20.0),
                     /*child: Expanded(*/
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                        ),
-                        elevation: 50,
-                        shadowColor: Colors.black,
-                        color: Colors.white,
-                        child: SizedBox(
-                          width: 380,
-                          height: 660,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                      child: SingleChildScrollView(
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                          elevation: 50,
+                          shadowColor: Colors.black,
+                          color: Colors.white,
+                          child: SizedBox(
+                            width: 380,
+                            height: 660,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          IconButton(
+                                            icon: Icon(
+                                              FontAwesomeIcons.arrowLeft,
+                                            ),
+                                            iconSize: 25,
+                                            color: Colors.black,
+                                            onPressed: () {
+                                              Navigator.push(
+                                                  context, new MaterialPageRoute(builder: (context) => new DashBoard()));
+                                            },
+                                          ), SizedBox(
+                                            width: 70,
+                                          ),
+                                            Container(
+                                              width: 100.0,
+                                              height: 130.0,
+                                              decoration: BoxDecoration(
+                                                image: DecorationImage(
+                                                    fit: BoxFit.cover, image: NetworkImage(register!.imgurl/*"assets/images/background.jpg"*/)),
+                                                borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                                                color: Colors.redAccent,
+                                                border: Border.all(
+                                                  color: Colors.blue,
+                                                  width: 3,
+                                                ),
+                                              ),
+                                            ),
+                                          SizedBox(
+                                            width: 50,
+                                          ),
+                                          IconButton(
+                                            icon: Icon(
+                                              FontAwesomeIcons.userEdit,
+                                            ),
+                                            iconSize: 25,
+                                            color: Colors.black,
+                                            onPressed: () {
+                                              Navigator.push(
+                                                  context, new MaterialPageRoute(builder: (context) => new Proflie()));
+                                            },
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Padding(
+                                        padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                                          child: Text(
+                                            register!.name,
+                                            style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                      ),
+                                     SizedBox(
+                                      height: 10,
+                                    ),
+                                    Center(
+                                        child: Padding(
+                                          padding: const EdgeInsets.fromLTRB(0, 0, 30, 0),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: [
+                                              Icon(FontAwesomeIcons.phone),
+                                              SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                ph!,
+                                                style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    Column(
                                       children: [
-                                        IconButton(
-                                          icon: Icon(
-                                            FontAwesomeIcons.arrowLeft,
-                                          ),
-                                          iconSize: 25,
-                                          color: Colors.black,
-                                          onPressed: () {
-                                            Navigator.push(
-                                                context, new MaterialPageRoute(builder: (context) => new DashBoard()));
-                                          },
-                                        ), SizedBox(
-                                          width: 70,
-                                        ),
-                                          Container(
-                                            width: 100.0,
-                                            height: 130.0,
-                                            decoration: BoxDecoration(
-                                              image: DecorationImage(
-                                                  fit: BoxFit.cover, image: NetworkImage(register!.imgurl/*"assets/images/background.jpg"*/)),
-                                              borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                                              color: Colors.redAccent,
-                                              border: Border.all(
-                                                color: Colors.blue,
-                                                width: 3,
-                                              ),
-                                            ),
-                                          ),
-                                        SizedBox(
-                                          width: 50,
-                                        ),
-                                        IconButton(
-                                          icon: Icon(
-                                            FontAwesomeIcons.userEdit,
-                                          ),
-                                          iconSize: 25,
-                                          color: Colors.black,
-                                          onPressed: () {
-                                            Navigator.push(
-                                                context, new MaterialPageRoute(builder: (context) => new Proflie()));
-                                          },
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  Padding(
-                                      padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                                        child: Text(
-                                          register!.name,
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                    ),
-                                   SizedBox(
-                                    height: 10,
-                                  ),
-                                  Center(
-                                      child: Padding(
-                                        padding: const EdgeInsets.fromLTRB(0, 0, 30, 0),
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
-                                            Icon(FontAwesomeIcons.phone),
-                                            SizedBox(
-                                              width: 10,
-                                            ),
-                                            Text(
-                                              ph!,
-                                              style: TextStyle(
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                        StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+                                          stream: FirebaseFirestore.instance.collection('address').snapshots(),
+                                          builder: (context, snapshot) {
+                                            if (snapshot.hasError) return Text('Error = ${snapshot.error}');
+
+                                                if (snapshot.hasData) {
+                                                  final docs = snapshot.data!.docs;
+                                                  return ListView.builder(
+                                                    shrinkWrap: true,
+                                                    itemCount: docs.length,
+                                                    itemBuilder: (context, document) {
+                                                      final data = docs[document].data();
+                                                      return Card(
+                                                        shape: RoundedRectangleBorder(
+                                                          borderRadius: BorderRadius.circular(10.0),
+                                                        ),
+                                                        shadowColor: Colors.black87,
+                                                        color: Colors.white,
+                                                        child: ListTile(
+                                                          title: Column(
+                                                            children: [
+                                                              Padding(
+                                                                padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+                                                                child: Row(
+                                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                                  children: [
+                                                                    Icon(FontAwesomeIcons.home),
+                                                                    SizedBox(
+                                                                      width: 20,
+                                                                    ),
+                                                                    Text(data['property'],style:TextStyle(color: Colors.black)),
+                                                                    SizedBox(
+                                                                      width: 80,
+                                                                    ),
+
+                                                                    Icon(FontAwesomeIcons.qrcode),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+
+                                                }
+
+                                                return Center(child: CircularProgressIndicator());
+                                              },
                                             ),
                                           ],
                                         ),
-                                      ),
+
+                                    SizedBox(
+                                      height: 180,
                                     ),
-                                  Column(
-                                    children: [
-                                      StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-                                        stream: FirebaseFirestore.instance.collection('address').snapshots(),
-                                        builder: (context, snapshot) {
-                                          if (snapshot.hasError) return Text('Error = ${snapshot.error}');
-
-                                          if (snapshot.hasData) {
-                                            final docs = snapshot.data!.docs;
-                                            return ListView.builder(
-                                              itemCount: docs.length,
-                                              itemBuilder: (context, document) {
-                                                final data = docs[document].data();
-                                                return ListTile(
-                                                  title: Text(data['property'],style:TextStyle(color: Colors.black)),
-                                                  subtitle: Text(data['city']),
-                                                );
+                                    Row(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.all(15.0),
+                                          child: SizedBox(
+                                            width: 165,
+                                            child: ElevatedButton(
+                                              onPressed: ()  {
+                                                Navigator.push(
+                                                    context, new MaterialPageRoute(builder: (context) => new  AddLocation()));
                                               },
-                                            );
-                                          }
 
-                                          return Center(child: CircularProgressIndicator());
-                                        },
-                                      ),
-                                    ],
-                                  ),
+                                              style: ButtonStyle(
 
-                                  SizedBox(
-                                    height: 300,
-                                  ),
-                                  Row(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(15.0),
-                                        child: SizedBox(
-                                          width: 165,
+                                                foregroundColor:
+                                                MaterialStateProperty.all<Color>(Colors.white),
+                                                backgroundColor:
+                                                MaterialStateProperty.all<Color>(Colors.blue),
+                                                shape: MaterialStateProperty.all<
+                                                    RoundedRectangleBorder>(
+                                                  RoundedRectangleBorder(
+                                                    borderRadius: BorderRadius.circular(10),
+                                                  ),
+                                                ),
+
+                                              ),
+                                              child: Padding(
+                                                padding: EdgeInsets.all(0),
+                                                child: Row(
+                                                  children: [
+                                                    Text(
+                                                        'Add New Location',
+                                                        style: TextStyle(fontSize: 12)
+                                                    ),
+                                                    SizedBox(
+                                                      width: 10,
+                                                    ),
+                                                    Icon(FontAwesomeIcons.plusCircle),
+
+                                                  ],
+                                                ),
+
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 115,
                                           child: ElevatedButton(
-                                            onPressed: ()  {
-                                              Navigator.push(
-                                                  context, new MaterialPageRoute(builder: (context) => new  AddLocation()));
-                                            },
+                                            onPressed: ()  {},
 
                                             style: ButtonStyle(
 
                                               foregroundColor:
                                               MaterialStateProperty.all<Color>(Colors.white),
                                               backgroundColor:
-                                              MaterialStateProperty.all<Color>(Colors.blue),
+                                              MaterialStateProperty.all<Color>(Colors.lightGreen),
                                               shape: MaterialStateProperty.all<
                                                   RoundedRectangleBorder>(
                                                 RoundedRectangleBorder(
@@ -227,14 +297,16 @@ class _ProfileEditState extends State<ProfileEdit> {
                                               padding: EdgeInsets.all(0),
                                               child: Row(
                                                 children: [
-                                                  Text(
-                                                      'Add New Location',
-                                                      style: TextStyle(fontSize: 12)
-                                                  ),
+                                                  Icon(FontAwesomeIcons.qrcode),
                                                   SizedBox(
                                                     width: 10,
                                                   ),
-                                                  Icon(FontAwesomeIcons.plusCircle),
+                                                  Text(
+                                                      'Scan QR\nCode ',
+                                                      style: TextStyle(fontSize: 12)
+                                                  ),
+
+
 
                                                 ],
                                               ),
@@ -242,53 +314,13 @@ class _ProfileEditState extends State<ProfileEdit> {
                                             ),
                                           ),
                                         ),
-                                      ),
-                                      SizedBox(
-                                        width: 115,
-                                        child: ElevatedButton(
-                                          onPressed: ()  {},
-
-                                          style: ButtonStyle(
-
-                                            foregroundColor:
-                                            MaterialStateProperty.all<Color>(Colors.white),
-                                            backgroundColor:
-                                            MaterialStateProperty.all<Color>(Colors.lightGreen),
-                                            shape: MaterialStateProperty.all<
-                                                RoundedRectangleBorder>(
-                                              RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.circular(10),
-                                              ),
-                                            ),
-
-                                          ),
-                                          child: Padding(
-                                            padding: EdgeInsets.all(0),
-                                            child: Row(
-                                              children: [
-                                                Icon(FontAwesomeIcons.qrcode),
-                                                SizedBox(
-                                                  width: 10,
-                                                ),
-                                                Text(
-                                                    'Scan QR\nCode ',
-                                                    style: TextStyle(fontSize: 12)
-                                                ),
-
-
-
-                                              ],
-                                            ),
-
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
+                      ),
                     /*),*/
                       ),
                 ]),
