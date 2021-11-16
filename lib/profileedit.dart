@@ -168,62 +168,71 @@ class _ProfileEditState extends State<ProfileEdit> {
                                           ),
                                         ),
                                       ),
-                                    Column(
-                                      children: [
-                                        StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-                                          stream: FirebaseFirestore.instance.collection('address').snapshots(),
-                                          builder: (context, snapshot) {
-                                            if (snapshot.hasError) return Text('Error = ${snapshot.error}');
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Expanded(
+                                      child: Column(
+                                        children: [
+                                          StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
+                                            stream: FirebaseFirestore.instance.collection('address').snapshots(),
+                                            builder: (context, snapshot) {
+                                              if (snapshot.hasError) return Text('Error = ${snapshot.error}');
 
-                                                if (snapshot.hasData) {
-                                                  final docs = snapshot.data!.docs;
-                                                  return ListView.builder(
-                                                    shrinkWrap: true,
-                                                    itemCount: docs.length,
-                                                    itemBuilder: (context, document) {
-                                                      final data = docs[document].data();
-                                                      return Card(
-                                                        shape: RoundedRectangleBorder(
-                                                          borderRadius: BorderRadius.circular(10.0),
-                                                        ),
-                                                        shadowColor: Colors.black87,
-                                                        color: Colors.white,
-                                                        child: ListTile(
-                                                          title: Column(
-                                                            children: [
-                                                              Padding(
-                                                                padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
-                                                                child: Row(
-                                                                  mainAxisAlignment: MainAxisAlignment.center,
-                                                                  children: [
-                                                                    Icon(FontAwesomeIcons.home),
-                                                                    SizedBox(
-                                                                      width: 20,
-                                                                    ),
-                                                                    Text(data['property'],style:TextStyle(color: Colors.black)),
-                                                                    SizedBox(
-                                                                      width: 80,
-                                                                    ),
-
-                                                                    Icon(FontAwesomeIcons.qrcode),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ],
+                                                  if (snapshot.hasData) {
+                                                    final docs = snapshot.data!.docs;
+                                                    return ListView.builder(
+                                                      shrinkWrap: true,
+                                                      itemCount: docs.length,
+                                                      itemBuilder: (context, document) {
+                                                        final data = docs[document].data();
+                                                        return Card(
+                                                          shape: RoundedRectangleBorder(
+                                                            borderRadius: BorderRadius.circular(10.0),
                                                           ),
+                                                          shadowColor: Colors.black87,
+                                                          color: Colors.white,
+                                                          child: ListTile(
+                                                            title: Column(
+                                                              children: [
+                                                                   Row(
+                                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                                    children: [
+                                                                      Icon(FontAwesomeIcons.home),
+                                                                      SizedBox(
+                                                                        width: 20,
+                                                                      ),
+                                                                      Text(data['property'],style:TextStyle(color: Colors.black)),
+                                                                      SizedBox(
+                                                                        width: 90,
+                                                                      ),
+                                                                      IconButton(
+                                                                        onPressed: (){
 
-                                                        ),
-                                                      );
-                                                    },
-                                                  );
 
-                                                }
+                                                                        },
+                                                                        icon: Icon(FontAwesomeIcons.qrcode),
+                                                                      )
 
-                                                return Center(child: CircularProgressIndicator());
-                                              },
-                                            ),
-                                          ],
-                                        ),
+                                                                    ],
+                                                                  ),
+
+                                                              ],
+                                                            ),
+
+                                                          ),
+                                                        );
+                                                      },
+                                                    );
+
+                                                  }
+
+                                                  return Center(child: CircularProgressIndicator());
+                                                },
+                                              ),
+                                            ],
+                                          ),
+                                    ),
 
                                     SizedBox(
                                       height: 180,
