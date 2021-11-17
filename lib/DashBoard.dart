@@ -13,6 +13,7 @@ import 'NavBar.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:clipboard/clipboard.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 Gender? selectedGender;
 DateTime? backbuttonpressedTime;
@@ -351,7 +352,7 @@ class _DashBoardState extends State<DashBoard> {
                 width: size.width,
                 height: 60,
                 child: Stack(
-                  overflow: Overflow.visible,
+                  clipBehavior: Clip.none,
                   children: [
                     CustomPaint(
                       size: Size(size.width, 80),
@@ -363,9 +364,13 @@ class _DashBoardState extends State<DashBoard> {
                           backgroundColor: Colors.orange,
                           child: Icon(Icons.people_alt_sharp),
                           elevation: 0.1,
-                          onPressed: () {
-                            DashBoard();
-                          }),
+                        onPressed: () async {
+                          final PermissionStatus permissionStatus = await _getPermission();
+                          if (permissionStatus == PermissionStatus.granted) {
+                            //We can now access our contacts here
+                          }
+                        }
+                      ),
                     ),
                     Container(
                       width: size.width,
@@ -432,6 +437,19 @@ class _DashBoardState extends State<DashBoard> {
       ),
     );
   }
+}
+//Check contacts permission
+Future<PermissionStatus> _getPermission() async {
+  //final PermissionStatus permission = await Permission.contacts.status;
+  // if (permission != PermissionStatus.granted &&
+  //     permission != PermissionStatus.denied) {
+    final Map<Permission, PermissionStatus> permissionStatus =
+    await [Permission.contacts].request();
+    return permissionStatus[Permission.contacts] ??
+        PermissionStatus.restricted;
+  // } else {
+  //   return permission;
+  // }
 }
 
 class BNBCustomPainter extends CustomPainter {
