@@ -231,8 +231,6 @@ class _ProflieState extends State<Proflie> {
                             {
                               await uploadPic(context);
                             }
-
-
                            if(register==null)
                              {
                                register = ProflieModel(phno:ph,name:name.text, gender: selectedGender.toString(), age: age.text,imgurl: _downloadurl!);

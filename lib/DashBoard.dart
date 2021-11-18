@@ -4,6 +4,7 @@ import 'package:Fiy/Address.dart';
 import 'package:Fiy/profileedit.dart';
 import 'package:Fiy/push_notifications_manager.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gender_picker/source/enums.dart';
@@ -14,6 +15,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 import 'package:clipboard/clipboard.dart';
 import 'package:permission_handler/permission_handler.dart';
+
+import 'contacts.dart';
 
 Gender? selectedGender;
 DateTime? backbuttonpressedTime;
@@ -367,7 +370,24 @@ class _DashBoardState extends State<DashBoard> {
                         onPressed: () async {
                           final PermissionStatus permissionStatus = await _getPermission();
                           if (permissionStatus == PermissionStatus.granted) {
+                            Navigator.push(
+                                context, MaterialPageRoute(builder: (context) => ContactsPage()));
                             //We can now access our contacts here
+                          }else {
+                            //If permissions have been denied show standard cupertino alert dialog
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) => CupertinoAlertDialog(
+                                  title: Text('Permissions error'),
+                                  content: Text('Please enable contacts access '
+                                      'permission in system settings'),
+                                  actions: <Widget>[
+                                    CupertinoDialogAction(
+                                      child: Text('OK'),
+                                      onPressed: () => Navigator.of(context).pop(),
+                                    )
+                                  ],
+                                ));
                           }
                         }
                       ),
