@@ -7,7 +7,7 @@ class ContactsPage extends StatefulWidget {
 }
 
 class _ContactsPageState extends State<ContactsPage> {
-  Iterable<Contact> _contacts;
+  Iterable<Contact> _contacts =[];
 
   @override
   void initState() {
@@ -34,21 +34,22 @@ class _ContactsPageState extends State<ContactsPage> {
       //Build a list view of all contacts, displaying their avatar and
       // display name
           ? ListView.builder(
-        itemCount: _contacts?.length ?? 0,
+        itemCount: _contacts.length,
         itemBuilder: (BuildContext context, int index) {
-          Contact contact = _contacts?.elementAt(index);
+          Contact contact = _contacts.elementAt(index);
           return ListTile(
             contentPadding:
             const EdgeInsets.symmetric(vertical: 2, horizontal: 18),
-            leading: (contact.avatar != null && contact.avatar.isNotEmpty)
-                ? CircleAvatar(
-              backgroundImage: MemoryImage(contact.avatar),
-            )
-                : CircleAvatar(
+            // leading: (contact.avatar != null)
+            //     ? CircleAvatar(
+            //   backgroundImage: MemoryImage(contact.avatar!),
+            // )
+            //     :
+            leading: CircleAvatar(
               child: Text(contact.initials()),
               backgroundColor: Theme.of(context).accentColor,
             ),
-            title: Text(contact.displayName ?? ''),
+             title: Text(contact.displayName ?? ''),
             //This can be further expanded to showing contacts detail
             // onPressed().
           );
